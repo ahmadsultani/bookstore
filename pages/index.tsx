@@ -17,6 +17,9 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Navbar/>
+        <p className='flex bg-red '>
+          adsa
+        </p>
       </main>
     </>
   )

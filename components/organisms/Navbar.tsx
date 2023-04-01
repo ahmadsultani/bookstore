@@ -29,7 +29,7 @@ function Navbar() {
 					Sign In
 				</Link>
 				<Link
-					href={""}
+					href={"signup"}
 					className="flex items-center py-[12px] justify-center w-[100px] rounded-[8px] text-primary border-[1px] bg-green hover:bg-transparent  hover:border-green hover:text-green border-green duration-[200ms] hover:duration-[200ms]"
 				>
 					Sign Up

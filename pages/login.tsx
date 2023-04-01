@@ -3,6 +3,7 @@ import React from "react";
 import Input from "@/components/atom/Input";
 import Image from "next/image";
 import AuthButton from "@/components/atom/AuthButton";
+import Link from "next/link";
 
 export default function login() {
 	return (
@@ -52,7 +53,7 @@ export default function login() {
 							<AuthButton fill={'Sign In'}/>
 						</div>
 						<div className="flex self-center gap-1 text-[15px]">
-							<p>New to Bookstore?</p><button className="text-green font-bold hover:underline ">Create Account</button>
+							<p>New to Bookstore?</p><Link href={'signup'} className="text-green font-bold hover:underline ">Create Account</Link>
 						</div>
 					</div>
 				</div>

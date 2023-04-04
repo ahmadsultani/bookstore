@@ -27,7 +27,17 @@ export default async function callAPI(config: ICallAPI) {
     method,
     data,
     headers,
-  }).catch(error => console.log(error)) as AxiosResponse;
+  }).catch(
+    (error) => {
+      if (error.response) {
+        return error.response;
+      } else if (error.request) {
+        return error.request;
+      } else {
+        return error.message;
+      }
+    }
+  ) as AxiosResponse;
 
   console.log(response)
 

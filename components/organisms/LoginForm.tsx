@@ -23,7 +23,8 @@ export default function LoginForm() {
     const result = await login({ email, password });
 
     if (result.error) {
-      alert(result.error);
+      alert("Login Failed: " + result.message);
+      return
     }
 
     alert("Login Success");

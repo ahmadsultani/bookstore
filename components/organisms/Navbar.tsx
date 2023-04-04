@@ -17,11 +17,11 @@ function Navbar() {
     };
   }, [scrollPosition]);
 
-  const bgclass = scrollPosition > 720 ? "fixed bg-primary shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)]" : "absolute bg-gradient-to-b from-black to-[rgb(0,0,0,0.3)] ";
+  const bgclass = scrollPosition > 720 ? " bg-primary shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)]" : " bg-gradient-to-b from-black to-[rgb(0,0,0,0.3)] ";
 	const buttonhover = scrollPosition >720? "hover:bg-darkgreen":"hover:text-green";
 
 	return (
-		<nav className={`duration-[400ms] z-50  text-white flex w-[100%] top-0 max-w-[100vw] ${bgclass} px-[100px] py-[15px]`}> 
+		<nav className={`duration-[400ms] z-50 fixed text-white flex w-[100%] top-0 max-w-[100vw] ${bgclass} px-[100px] py-[15px]`}> 
 			<div className="flex grow items-center px-[20px] font-bold text-white text-[24px]">
 				<p>BookStore</p>
 			</div>

@@ -24,7 +24,7 @@ export default function SignupForm() {
     const result = await signup({ name, email, password, confirmPassword });
 
     if (result.error) {
-      alert("Login Failed: " + result.message);
+      alert("Signup Failed: " + result.message);
       return;
     } else {
       router.push("/login");

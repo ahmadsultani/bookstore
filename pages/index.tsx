@@ -13,9 +13,18 @@ export default function Home() {
 			<main className="flex flex-col">
 				<Navbar />
 				<Hero/>
-				<div className="h-[1000px]">
-
+				
+				<div className="flex flex-wrap px-[200px] gap-[40px]">
+					<Card title={'The Ugly Monster '} author={'Dilul'} source='TestPic.jpg ' price={100000} />
+					<Card title={'The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)'} author={'Dilul'} source='TestPic.jpg' price={100000} />
+					<Card title={'The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)'} author={'Dilul'} source='TestPic.jpg' price={100000} />
+					<Card title={'The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)'} author={'Dilul'} source='TestPic.jpg' price={100000} />
+					<Card title={'The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)'} author={'Dilul'} source='TestPic.jpg' price={100000} />
+					<Card title={'The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)'} author={'Dilul'} source='TestPic.jpg' price={100000} />
+					<Card title={'The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)'} author={'Dilul'} source='TestPic.jpg' price={100000} />
 				</div>
+
+
 			</main>
 		</>
 	);

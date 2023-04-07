@@ -28,7 +28,7 @@ export default function LoginForm() {
     }
 
     alert("Login Success");
-    router.push("/home");
+    router.push("/");
   };
 
   return (

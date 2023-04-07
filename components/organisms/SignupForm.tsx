@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import AuthButton from "@/components/atom/AuthButton";
-import Input from "@/components/atom/Input";
-import PasswordInput from "@/components/atom/PasswordInput";
+import AuthButton from "@/components/atoms/AuthButton";
+import Input from "@/components/atoms/Input";
+import PasswordInput from "@/components/atoms/PasswordInput";
 import { useRouter } from "next/router";
 import { signup } from "@/service/auth";
 

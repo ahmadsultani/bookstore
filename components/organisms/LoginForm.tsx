@@ -4,9 +4,10 @@ import { useState } from "react";
 
 import { login } from "@/service/auth";
 
-import Input from "@/components/atom/Input";
-import PasswordInput from "@/components/atom/PasswordInput";
-import AuthButton from "@/components/atom/AuthButton";
+import Input from "@/components/atoms/Input";
+import PasswordInput from "@/components/atoms/PasswordInput";
+import AuthButton from "@/components/atoms/AuthButton";
+import Cookies from "js-cookie";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -28,6 +29,9 @@ export default function LoginForm() {
     }
 
     alert("Login Success");
+
+    Cookies.set("token", result.data.token, { expires: 1 });
+
     router.push("/");
   };
 

@@ -12,11 +12,13 @@ export default function profile() {
 	let email = "oppatamvan99@gmail.com";
 	const first = name.split(" ")[0];
 
-	const [showTopup,setShowTopup]=useState(false);
+	const [onTopup, setOnTopup] = useState(false);
 
-	const handleShowTopup= ()=>{
-		setShowTopup(true);
-	}
+	const handleOpenModal = () => {
+		setOnTopup(!onTopup);
+    console.log(onTopup);
+
+	};
 
 
 	return (
@@ -78,7 +80,7 @@ export default function profile() {
 									</div>
 								</section>
 								<section>
-									<button onClick={handleShowTopup} className="flex gap-[5px] bg-green rounded-lg text-primary font-bold w-[100%] p-[10px] justify-center items-center hover:bg-[#06b850] duration-[200ms] ease-in-out">
+									<button onClick={handleOpenModal} className="flex gap-[5px] bg-green rounded-lg text-primary font-bold w-[100%] p-[10px] justify-center items-center hover:bg-[#06b850] duration-[200ms] ease-in-out">
 										<h1 className="-mt-[4px]">Topup</h1>
 										<Image
 											src={"/assets/icons/cashadd.svg"}
@@ -97,7 +99,7 @@ export default function profile() {
 						></section>
 					</div>
 				</div>
-				{showTopup && <Topupmodal />}
+				<Topupmodal handleOpenModal={handleOpenModal} isVisible={onTopup}/>
 			</main>
 		</>
 	);

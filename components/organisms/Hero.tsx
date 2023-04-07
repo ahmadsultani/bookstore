@@ -5,9 +5,9 @@ import Image from "next/image";
 export default function Hero() {
 	return (
 		<main className="flex items-center justify-center bg-darkgreen max-h-screen overflow-hidden ">
-			<div className="h-[100%] 2-[100%] ">
+			<div className="h-[100%] w-[100%] ">
 				<Image
-					src={"/assets/images/Library.jpg"}
+					src={"/assets/images/Library.webp"}
 					alt=""
 					width={4000}
 					height={4000}

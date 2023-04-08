@@ -7,10 +7,22 @@ export const topup = async (nominal: number) => {
   const url = `${ROOT_URL}/${API_VERSION}/topup`;
 
   const jsonData = JSON.stringify({ nominal });
+  console.log(jsonData)
 
   return callAPI({
     url,
-    method: "POST",
+    method: "PUT",
     data: jsonData,
+    token: true,
+  });
+}
+
+export const getProfileData = async () => {
+  const url = `${ROOT_URL}/${API_VERSION}/profile`;
+
+  return callAPI({
+    url,
+    method: "GET",
+    token: true,
   });
 }

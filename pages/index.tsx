@@ -16,23 +16,26 @@ export default function Home({ books }: { books: BookTypes[] }) {
       <main className="flex flex-col">
         <Navbar onLanding={true} />
         <Hero />
-
-        <div className="grid grid-cols-4 px-[100px] border-t-[24px] border-t-primary py-20 gap-[40px] bg-darkgreen">
+        <section className="bg-darkgreen px-[100px] border-t-[24px] border-t-primary py-20 ">
           {books ? (
-            books.map((book) => (
-              <Card
-                key={book._id}
-                id={book._id}
-                title={book.title}
-                author={book.author}
-                source="TestPic.jpg"
-                price={book.price}
-              />
-            ))
+            <div className="grid grid-cols-4 gap-[40px] ">
+              {books.map((book) => (
+                <Card
+                  key={book._id}
+                  id={book._id}
+                  title={book.title}
+                  author={book.author}
+                  source="TestPic.jpg"
+                  price={book.price}
+                />
+              ))}
+            </div>
           ) : (
-            <p>No books</p>
+            <p className="text-white text-center text-4xl font-bold w-fit mx-auto bg-primary px-12 py-24 my-10 rounded-lg ">
+              Sorry, Currently We Ran Out of Book :(
+            </p>
           )}
-        </div>
+        </section>
       </main>
     </>
   );
@@ -46,4 +49,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
       books,
     },
   };
-}
+};

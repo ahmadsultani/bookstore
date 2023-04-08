@@ -10,6 +10,7 @@ module.exports = {
         primary: "#001e2b",
         green: "#00ed64",
         darkgreen: "#00684a",
+        greenhov :"#06b850 ",
       },
     },
     plugins: [],

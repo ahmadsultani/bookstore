@@ -10,7 +10,7 @@ export default function Hero() {
         alt=""
         width={4000}
         height={4000}
-        className="object-cover absolute opacity-70 z-10 h-screen"
+        className="object-cover absolute opacity-70 z-10 h-screen "
       />
       <div className="flex font-bold text-white px-[25px] z-20 pt-[50px]">
         <div className="flex flex-col gap-[40px] h-[100%] w-[100%] items-center justify-center ">

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Navbar from "@/components/organisms/Navbar";
-import Card from "@/components/molecule/Card";
+import Card from "@/components/molecules/Card";
 import Hero from "@/components/organisms/Hero";
 
 export default function Home() {

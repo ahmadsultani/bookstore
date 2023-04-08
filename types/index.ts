@@ -9,3 +9,15 @@ export interface SignupTypes {
   password: string;
   confirmPassword: string;
 }
+
+export interface UserTypes {
+  id: string;
+  name: string;
+  email: string;
+  balance: number;
+}
+
+export interface JWTPayloadTypes extends UserTypes {
+  iat: number;
+  exp: number;
+}

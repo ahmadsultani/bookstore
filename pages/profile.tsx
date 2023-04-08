@@ -3,10 +3,10 @@ import Navbar from "@/components/organisms/Navbar";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-import Topupmodal from "@/components/molecule/Topupmodal";
+import Topupmodal from "@/components/molecules/Topupmodal";
 import { useState } from "react";
 
-export default function profile() {
+export default function Profile() {
 	const shadow = "shadow-[0_5px_5px_2px_rgba(0,0,0,0.2)]";
 	let name = "Chu Kang Park Ir";
 	let email = "oppatamvan99@gmail.com";

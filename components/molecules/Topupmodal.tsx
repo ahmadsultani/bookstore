@@ -1,17 +1,11 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
-import Amountbtn from "../atom/Amountbtn";
-import AmountInput from "../atom/AmountInput";
+import Amountbtn from "../atoms/Amountbtn";
+import AmountInput from "../atoms/AmountInput";
 import { useState } from "react";
 import profile from "@/pages/profile";
 
-interface TopupModalProps {
-	isVisible: boolean;
-	handleOpenModal: () => void;
-}
-
-export default function Topupmodal(props: TopupModalProps) {
-	const { isVisible, handleOpenModal } = props;
+export default function Topupmodal() {
 	const [activeIndex, setActiveIndex] = useState(-1);
 	const [amount, setAmount] = useState(0);
 
@@ -26,18 +20,9 @@ export default function Topupmodal(props: TopupModalProps) {
 			? "bg-green text-primary hover:bg-[#06b850]"
 			: "text-white cursor-not-allowed bg-[rgb(93,120,95)] ";
 
-	const show = isVisible == false ? "hidden" : "flex flex-col";
-
 	return (
-		<main
-			className={`fixed ${show} top-0 z-50 w-screen bg-black bg-opacity-70 h-screen items-center justify-center`}
-		>
+		<main className="fixed flex top-0 z-50 w-screen bg-black bg-opacity-70 h-screen items-center justify-center">
 			<div className="bg-primary p-[30px] flex gap-[30px] flex-col h-[540px] rounded-lg overflow-hidden ">
-				<section className=" justify-end flex">
-					<button onClick={handleOpenModal} className="bg-green">
-						Exit
-					</button>
-				</section>
 				<section className="flex gap-[10px] justify-center">
 					<Image
 						src={"/assets/logos/Bookstore.svg"}

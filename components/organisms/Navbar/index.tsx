@@ -1,5 +1,7 @@
+import Cookies from "js-cookie";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Auth from "./Auth";
 
 function Navbar({ onLanding }: { onLanding?: boolean }) {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -11,6 +13,8 @@ function Navbar({ onLanding }: { onLanding?: boolean }) {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
 
+    console.log("token", Cookies.get("token"));
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -19,7 +23,8 @@ function Navbar({ onLanding }: { onLanding?: boolean }) {
   const bgclass =
     scrollPosition < 720 &&
     "bg-transparent bg-gradient-to-b from-black to-[rgb(0,0,0,0.3)] ";
-  const buttonhover = scrollPosition < 720 && "hover:text-green hover:bg-transparent";
+  const buttonhover =
+    scrollPosition < 720 ? "hover:text-green hover:bg-transparent": "";  
 
   const navitems = [
     {
@@ -62,20 +67,7 @@ function Navbar({ onLanding }: { onLanding?: boolean }) {
           </Link>
         ))}
       </ul>
-      <div className="flex items-center justify-center px-[20px] gap-[20px]">
-        <Link
-          href={"login"}
-          className={`flex w-[120px] py-[12px] font-normal justify-center align-middle rounded-[8px]  hover:bg-darkgreen ${buttonhover}  items-center duration-[200ms] hover:duration-[200ms] `}
-        >
-          Sign In
-        </Link>
-        <Link
-          href={"signup"}
-          className="flex items-center py-[12px] justify-center w-[100px] rounded-[8px] text-primary border-[1px] bg-green hover:bg-transparent  hover:border-green hover:text-green border-green duration-[200ms] hover:duration-[200ms]"
-        >
-          Sign Up
-        </Link>
-      </div>
+      <Auth buttonhover={buttonhover} />
     </nav>
   );
 }

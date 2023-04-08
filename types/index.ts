@@ -17,6 +17,14 @@ export interface UserTypes {
   balance: number;
 }
 
+export interface BookTypes {
+  _id: string;
+  author: string;
+  title: string;
+  qty: number;
+  price: number;
+}
+
 export interface JWTPayloadTypes extends UserTypes {
   iat: number;
   exp: number;

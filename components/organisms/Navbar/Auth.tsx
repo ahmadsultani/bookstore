@@ -10,7 +10,7 @@ import { JWTPayloadTypes } from "@/types";
 import Loader from "@/components/organisms/Loader";
 
 interface AuthProps {
-  buttonhover: boolean;
+  buttonhover: string;
 }
 
 export default function Auth(props: AuthProps) {

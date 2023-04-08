@@ -39,8 +39,6 @@ export default async function callAPI(config: ICallAPI) {
     }
   ) as AxiosResponse;
 
-  console.log(response)
-
   if (response.status > 300) {
     const res = {
       error: true,
@@ -56,8 +54,6 @@ export default async function callAPI(config: ICallAPI) {
     message: 'success',
     data: length > 1 ? response.data : response.data.data,
   };
-
-  console.log(res)
 
   return res;
 }

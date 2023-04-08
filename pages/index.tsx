@@ -2,8 +2,11 @@ import Head from "next/head";
 import Navbar from "@/components/organisms/Navbar";
 import Card from "@/components/molecules/Card";
 import Hero from "@/components/organisms/Hero";
+import { getAllBooks } from "@/service/book";
+import { BookTypes } from "@/types";
+import { GetServerSideProps } from "next";
 
-export default function Home() {
+export default function Home({ books }: { books: BookTypes[] }) {
   return (
     <>
       <Head>
@@ -14,63 +17,33 @@ export default function Home() {
         <Navbar onLanding={true} />
         <Hero />
 
-        <div className="flex flex-wrap px-[200px] gap-[40px]">
-          <Card
-            title={"The Ugly Monster "}
-            author={"Dilul"}
-            source="TestPic.jpg "
-            price={100000}
-          />
-          <Card
-            title={
-              "The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)"
-            }
-            author={"Dilul"}
-            source="TestPic.jpg"
-            price={100000}
-          />
-          <Card
-            title={
-              "The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)"
-            }
-            author={"Dilul"}
-            source="TestPic.jpg"
-            price={100000}
-          />
-          <Card
-            title={
-              "The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)"
-            }
-            author={"Dilul"}
-            source="TestPic.jpg"
-            price={100000}
-          />
-          <Card
-            title={
-              "The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)"
-            }
-            author={"Dilul"}
-            source="TestPic.jpg"
-            price={100000}
-          />
-          <Card
-            title={
-              "The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)"
-            }
-            author={"Dilul"}
-            source="TestPic.jpg"
-            price={100000}
-          />
-          <Card
-            title={
-              "The Ugly Monster Who Saved The World Then Got a Harem (sekedar test)"
-            }
-            author={"Dilul"}
-            source="TestPic.jpg"
-            price={100000}
-          />
+        <div className="grid grid-cols-4 px-[100px] border-t-[24px] border-t-primary py-20 gap-[40px] bg-darkgreen">
+          {books ? (
+            books.map((book) => (
+              <Card
+                key={book._id}
+                id={book._id}
+                title={book.title}
+                author={book.author}
+                source="TestPic.jpg"
+                price={book.price}
+              />
+            ))
+          ) : (
+            <p>No books</p>
+          )}
         </div>
       </main>
     </>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const books: BookTypes[] = await getAllBooks().then((res) => res.data);
+
+  return {
+    props: {
+      books,
+    },
+  };
 }

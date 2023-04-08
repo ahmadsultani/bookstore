@@ -26,3 +26,16 @@ export const getProfileData = async () => {
     token: true,
   });
 }
+
+export const checkout = async (book_id: string, totalBook: number) => {
+  const url = `${ROOT_URL}/${API_VERSION}/checkout`;
+
+  const jsonData = JSON.stringify({ book_id, totalBook });
+
+  return callAPI({
+    url,
+    method: "PUT",
+    data: jsonData,
+    token: true,
+  });
+}

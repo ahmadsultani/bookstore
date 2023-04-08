@@ -11,15 +11,21 @@ export async function getAllBooks() {
     method: "GET",
   });
 
+  console.log("res", res);
+
   return res;
 }
 
 export async function getBookById(id: string) {
-  const url = `${ROOT_URL}/${API_VERSION}/books/${id}`;
+  const url = `${ROOT_URL}/${API_VERSION}/book/${id}`;
 
-  return callAPI({
+  const res = await callAPI({
     url,
     method: "GET",
     token: true
   });
+
+  console.log("res", res);
+
+  return res;
 }

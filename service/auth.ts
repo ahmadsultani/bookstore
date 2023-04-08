@@ -2,10 +2,10 @@ import callAPI from "@/config/api";
 import { LoginTypes, SignupTypes } from "@/types";
 
 const ROOT_URL = process.env.NEXT_PUBLIC_API;
-const API_URL = 'api/v1';
+const API_VERSION = 'api/v1';
 
 export const login = async (data: LoginTypes) => {
-  const url = `${ROOT_URL}/${API_URL}/auth/login`;
+  const url = `${ROOT_URL}/${API_VERSION}/auth/login`;
 
   const jsonData = JSON.stringify(data);
 
@@ -17,7 +17,7 @@ export const login = async (data: LoginTypes) => {
 }
 
 export const signup = async (data: SignupTypes) => {
-  const url = `${ROOT_URL}/${API_URL}/auth/signup`;
+  const url = `${ROOT_URL}/${API_VERSION}/auth/signup`;
 
   const jsonData = JSON.stringify(data);
 

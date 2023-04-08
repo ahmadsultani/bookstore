@@ -1,7 +1,7 @@
 import callAPI from "@/config/api";
 
 const ROOT_URL = process.env.NEXT_PUBLIC_API;
-const API_VERSION = 'api/v1';
+const API_VERSION = "api/v1";
 
 export async function getAllBooks() {
   const url = `${ROOT_URL}/${API_VERSION}/book`;
@@ -11,11 +11,9 @@ export async function getAllBooks() {
     method: "GET",
   });
 
-
-  console.log('res', res)
+  console.log("res", res);
 
   return res;
-
 }
 
 export async function getBookById(id: string) {

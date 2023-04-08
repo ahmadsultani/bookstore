@@ -22,7 +22,7 @@ export default async function callAPI(config: ICallAPI) {
     }
   }
 
-  const response = await axios({
+  const response: AxiosResponse = await axios({
     url,
     method,
     data,
@@ -37,12 +37,21 @@ export default async function callAPI(config: ICallAPI) {
         return error.message;
       }
     }
-  ) as AxiosResponse;
+  );
 
-  if (response.status > 300) {
+  if (response.status > 300 ) {
     const res = {
       error: true,
       message: response.data.message,
+      data: null,
+    };
+    return res;
+  }
+
+  if (!response.data) {
+    const res = {
+      error: true,
+      message: 'error',
       data: null,
     };
     return res;

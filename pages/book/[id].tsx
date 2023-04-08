@@ -37,7 +37,7 @@ export default function BookDetail() {
 	}, [id, getBook]);
 
 	const shadow = "shadow-[-5px_0px_15px_8px_rgba(0,0,0,0.25)]";
-	const btnstyle = "px-[15px] py-[5px] bg-white items-center justify-center";
+	const btnstyle = "px-[10px] py-[0px] bg-white items-center justify-center w-[30px] h-[25px]";
 
   return (
     <>
@@ -93,12 +93,12 @@ export default function BookDetail() {
         </section>
         <section>
           {/*Right */}
-          <div className="flex flex-col bg-green rounded-md p-[30px]">
+          <div className="flex flex-col bg-green rounded-md p-[25px] gap-[15px]">
             <h1>Quantity</h1>
-            <div className="flex gap-[20px] rounded-md border-[1px] border-black items-center justify-center overflow-hidden">
-              <button className={`${btnstyle}`}>+</button>
-              <section className="items-center justify-center">sds</section>
-              <button className={`${btnstyle}`}>-</button>
+            <div className="flex rounded-md border-[1px] border-black items-center justify-center overflow-hidden">
+              <button className={`${btnstyle} border-r-[1px] border-black`}>-</button>
+              <input type="number" disabled value={0} className="flex items-center justify-center pl-[12px] w-[60px] h-[25px] text-center m-auto appearance-none"></input>
+              <button className={`${btnstyle} border-l-[1px] border-black`}>+</button>
             </div>
           </div>
         </section>

@@ -16,10 +16,9 @@ export default function Profile() {
 
 	const handleOpenModal = () => {
 		setOnTopup(!onTopup);
-    console.log(onTopup);
-
+		console.log(onTopup);
 	};
-
+	const profilepicture = "/assets/images/Library.webp";
 
 	return (
 		<>
@@ -38,15 +37,15 @@ export default function Profile() {
 						className="object-cover h-screen opacity-70 absolute"
 					/>
 
-					<div className=" top-0 bottom-0 flex max-w-screen gap-[30px] w-[calc(calc(100vw-20%))] h-[calc(100vh-20%)] z-20">
+					<div className=" top-0 bottom-0 flex max-w-screen gap-[30px] w-[calc(calc(100vw-20%))] z-20">
 						<aside
-							className={`p-[5px] flex flex-col w-[300px] bg-white h-[100%] ${shadow} rounded-lg overflow-hidden`}
+							className={`p-[5px] flex flex-col w-[300px] bg-white ${shadow} rounded-lg overflow-hidden`}
 						>
 							<div className="flex  h-[100px] px-[15px] items-center border-b-[1px] border-[rgba(0,0,0,1)]">
 								<div className="flex gap-[10px] ">
 									<Image
 										className="h-[50px] w-[50px] rounded-full object-cover"
-										src={"/assets/images/TestPic.jpg"}
+										src={profilepicture}
 										alt="profile"
 										width={100}
 										height={100}
@@ -80,7 +79,10 @@ export default function Profile() {
 									</div>
 								</section>
 								<section>
-									<button onClick={handleOpenModal} className="flex gap-[5px] bg-green rounded-lg text-primary font-bold w-[100%] p-[10px] justify-center items-center hover:bg-[#06b850] duration-[200ms] ease-in-out">
+									<button
+										onClick={handleOpenModal}
+										className="flex gap-[5px] bg-green rounded-lg text-primary font-bold w-[100%] p-[10px] justify-center items-center hover:bg-greenhov duration-[200ms] ease-in-out"
+									>
 										<h1 className="-mt-[4px]">Topup</h1>
 										<Image
 											src={"/assets/icons/cashadd.svg"}
@@ -94,12 +96,69 @@ export default function Profile() {
 							</div>
 						</aside>
 						{/* Left Side*/}
-						<section
-							className={`${shadow} bg-white grow p-[20px] rounded-lg`}
-						></section>
+						<aside
+							className={`${shadow} flex flex-col gap-[20px] bg-white grow p-[40px] rounded-lg`}
+						>
+							<div className="font-semibold text-[20px] text-primary">
+								{" "}
+								My Account :
+							</div>
+							<div className="flex gap-[30px]">
+								<section
+									className={`w-auto flex flex-col gap-[20px] bg-white p-[20px] rounded-lg border-[1px] ${shadow}`}
+								>
+									<Image
+										src={profilepicture}
+										alt={"user profile"}
+										height={400}
+										width={400}
+										className="h-[250px] w-[250px] object-cover"
+									></Image>
+
+									<button className="bg-green p-[10px] rounded-md hover:bg-greenhov duration-[200ms]">
+										Change Photo
+									</button>
+								</section>
+								<section className="border-l-[1px] px-[30px] flex flex-col gap-[30px]">
+									<div className="flex text-[18px]">Bio :</div>
+									<section className="flex gap-[45px]">
+										<ul className="flex flex-col gap-[15px]">
+											<li>Name</li>
+											<li>Email</li>
+											<li>Sex</li>
+											<li>Birth Date</li>
+										</ul>
+										<ul className="flex flex-col gap-[15px]">
+											<li>{name}</li>
+											<li>{email}</li>
+											<li>
+												<div className="flex gap-[30px]">
+												<section className="flex gap-[10px] items-center">													<input
+														type="radio"
+														name="group1"
+														value="Male"
+													></input>
+													<p>Male</p></section>
+													<section className="flex gap-[10px] items-center">													<input
+														type="radio"
+														name="group1"
+														value="Female"
+													></input>
+													<p>Female</p></section>
+												</div>
+											</li>
+											<li>
+												<input type="date" />
+											</li>
+										</ul>
+									</section>
+								</section>
+							</div>
+						</aside>
+						{/* right side */}
 					</div>
 				</div>
-				<Topupmodal handleOpenModal={handleOpenModal} isVisible={onTopup}/>
+				<Topupmodal handleOpenModal={handleOpenModal} isVisible={onTopup} />
 			</main>
 		</>
 	);

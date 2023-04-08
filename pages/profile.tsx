@@ -2,13 +2,17 @@ import Navbar from "@/components/organisms/Navbar";
 import Image from "next/image";
 import Head from "next/head";
 import Topupmodal from "@/components/molecules/Topupmodal";
-import Cookies from "js-cookie";
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { UserTypes } from "@/types";
 import { getProfileData } from "@/service/user";
 
 export default function Profile() {
-  const [user, setUser] = useState<UserTypes>();
+  const [user, setUser] = useState<UserTypes>({
+    id: "Guest",
+    name: "Guest",
+    email: "Guest",
+    balance: 0,
+  });
   const [onTopup, setOnTopup] = useState(false);
   const [isCompletedTopup, setIsCompletedTopup] = useState(false);
 
@@ -16,12 +20,7 @@ export default function Profile() {
     const result = await getProfileData();
     if (result.error) {
       alert("Failed to get user data");
-      setUser({
-        id: "Guest",
-        name: "Guest",
-        email: "Guest",
-        balance: 0,
-      });
+      return;
     }
     console.log("masuk");
     const user: UserTypes = result.data;

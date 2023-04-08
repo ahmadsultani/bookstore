@@ -11,8 +11,6 @@ export async function getAllBooks() {
     method: "GET",
   });
 
-  console.log("res", res);
-
   return res;
 }
 
@@ -22,5 +20,6 @@ export async function getBookById(id: string) {
   return callAPI({
     url,
     method: "GET",
+    token: true
   });
 }

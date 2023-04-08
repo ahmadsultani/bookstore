@@ -1,43 +1,13 @@
-import { useRouter } from "next/router";
 import Navbar from "@/components/organisms/Navbar";
 import Image from "next/image";
 import Head from "next/head";
 import { getBookById } from "@/service/book";
 import { BookTypes } from "@/types";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { GetServerSideProps } from "next";
 
-export default function BookDetail() {
-	const router = useRouter();
-  const { id } = useMemo(() => router.query, [router.query]);
-	const [book, setBook] = useState<BookTypes>();
-
-  const getBook = useCallback(async () => {
-    const res = await getBookById(id as string);
-
-    if (!res) {
-			router.push("/404");
-    }
-
-    if (
-      res.message === "Unauthorized" ||
-      res.message === "jwt expired" ||
-      res.message === "Invalid token"
-    ) {
-      router.push("/login");
-    }
-
-    const { data } = res;
-
-    return data as BookTypes;
-  }, [id, router]);
-
-	useEffect(() => {
-		if (!id) return;
-		getBook().then((data) => setBook(data));
-	}, [id, getBook]);
-
-	const shadow = "shadow-[-5px_0px_15px_8px_rgba(0,0,0,0.25)]";
-	const btnstyle = "px-[15px] py-[5px] bg-white items-center justify-center";
+export default function BookDetail({ book }: { book: BookTypes }) {
+  const shadow = "shadow-[-5px_0px_15px_8px_rgba(0,0,0,0.25)]";
+  const btnstyle = "px-[15px] py-[5px] bg-white items-center justify-center";
 
   return (
     <>
@@ -107,28 +77,43 @@ export default function BookDetail() {
   );
 }
 
-interface GetServerSideProps {
-	req: {
-		cookies: {
-			token: string;
-		};
-	}
-}
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { token } = context.req.cookies;
 
-export async function getServerSideProps({ req }: GetServerSideProps) {
+  const id = context.params?.id;
 
-	const { token } = req.cookies;
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
 
-	if (!token) {
-		return {
-			redirect: {
-				destination: "/login",
-				permanent: false,
-			},
-		};
-	}
+  if (!id) {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+    };
+  }
 
-	return {
-		props: {},
-	};
-}
+  const res = await getBookById(id as string, token);
+
+  if (res.message === "Book not found" || res.error) {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+    };
+  }
+
+  const { data } = res;
+
+  return {
+    props: { book: data },
+  };
+};

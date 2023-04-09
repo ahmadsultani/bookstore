@@ -19,6 +19,7 @@ export default function Home({
     toast(error, { type: "error"});
   }
 
+
   return (
     <>
       <Head>
@@ -37,7 +38,7 @@ export default function Home({
                   id={book._id}
                   title={book.title}
                   author={book.author}
-                  source="TestPic.jpg"
+                  source={book.title}
                   price={book.price}
                 />
               ))}

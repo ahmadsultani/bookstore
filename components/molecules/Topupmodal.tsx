@@ -4,6 +4,7 @@ import Amountbtn from "../atoms/Amountbtn";
 import AmountInput from "../atoms/AmountInput";
 import { useState } from "react";
 import { topup } from "@/service/user";
+import { toast } from "react-toastify";
 
 interface TopupModalProps {
   isVisible: boolean;
@@ -26,11 +27,11 @@ export default function Topupmodal(props: TopupModalProps) {
     if (amount <= 0) return;
     const result = await topup(amount);
     if (result.error) {
-      alert("Failed to topup");
+      toast("Failed to topup :(", { type: "error" });
       return;
     }
     setIsCompletedTopup(true);
-    alert("Topup Success");
+    toast("Topup Success", { type: "success" });
     handleOpenModal();
     setActiveIndex(-1);
   };

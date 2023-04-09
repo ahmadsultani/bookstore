@@ -45,6 +45,8 @@ export default function BookDetail({ book }: { book: BookTypes }) {
     router.push("/Checkout");
   };
 
+  const bookCoversrc = book.title;
+
   return (
     <>
       <Head>
@@ -59,7 +61,7 @@ export default function BookDetail({ book }: { book: BookTypes }) {
           {/*Left */}
           <div className={` bg-[#d9d9d965] px-[40px] py-[20px] rounded-md `}>
             <Image
-              src={`/assets/images/Book.png`}
+              src={`/assets/BookCover/${bookCoversrc}.png`}
               alt={""}
               height={300}
               width={300}

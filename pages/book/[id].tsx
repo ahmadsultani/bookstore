@@ -42,7 +42,7 @@ export default function BookDetail({ book }: { book: BookTypes }) {
     Cookies.set("book", JSON.stringify(book));
     Cookies.set("requestedQty", JSON.stringify(qtyValue));
     toast("Great, you can complete your payment!", { type: "success" });
-    router.push("/checkout");
+    router.push("/Checkout");
   };
 
   return (

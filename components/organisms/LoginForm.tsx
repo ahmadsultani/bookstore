@@ -2,12 +2,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+
 import { login } from "@/service/auth";
 
 import Input from "@/components/atoms/Input";
 import PasswordInput from "@/components/atoms/PasswordInput";
 import AuthButton from "@/components/atoms/AuthButton";
-import Cookies from "js-cookie";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -17,18 +19,20 @@ export default function LoginForm() {
 
   const onSubmit = async () => {
     if (email === "" || password === "") {
-      alert("Please fill all the fields");
+      toast("Please fill all the fields", { type: "error" });
       return;
     }
 
     const result = await login({ email, password });
 
     if (result.error) {
-      alert("Login Failed: " + result.message);
-      return
+      toast("Login Failed: " + result.message, {
+        type: "error",
+      });
+      return;
     }
 
-    alert("Login Success");
+    toast("Login Success", { type: "success" });
 
     Cookies.set("token", result.data.token, { expires: 1 });
 

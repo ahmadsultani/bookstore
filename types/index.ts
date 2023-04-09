@@ -29,3 +29,8 @@ export interface JWTPayloadTypes extends UserTypes {
   iat: number;
   exp: number;
 }
+
+export interface CheckoutTypes {
+  book: BookTypes;
+  requestedQty: number;
+}

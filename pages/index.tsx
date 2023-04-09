@@ -5,8 +5,20 @@ import Hero from "@/components/organisms/Hero";
 import { getAllBooks } from "@/service/book";
 import { BookTypes } from "@/types";
 import { GetServerSideProps } from "next";
+import { toast } from "react-toastify";
 
-export default function Home({ books }: { books: BookTypes[] }) {
+export default function Home({
+  books,
+  error,
+}: {
+  books: BookTypes[];
+  error: string;
+}) {
+
+  if (error) {
+    toast(error, { type: "error"});
+  }
+
   return (
     <>
       <Head>
@@ -41,12 +53,14 @@ export default function Home({ books }: { books: BookTypes[] }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const books: BookTypes[] = await getAllBooks().then((res) => res.data);
+  const error = context.res.getHeader("error");
 
   return {
     props: {
       books,
+      error: error || null,
     },
   };
 };

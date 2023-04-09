@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { toast } from "react-toastify";
+
 import AuthButton from "@/components/atoms/AuthButton";
 import Input from "@/components/atoms/Input";
 import PasswordInput from "@/components/atoms/PasswordInput";
@@ -17,18 +19,18 @@ export default function SignupForm() {
 
 	const onSubmit = async () => {
 		if (password !== confirmPassword) {
-			alert("Password not match");
+			toast.error("Password not match");
 			return;
 		}
 
 		const result = await signup({ name, email, password, confirmPassword });
 
 		if (result.error) {
-			alert("Signup Failed: " + result.message);
+			toast.error("Signup Failed: " + result.message);
 			return;
 		}
 
-		alert("Signup Success!");
+		toast.success("Signup Success!");
 		router.push("/login");
 	};
 

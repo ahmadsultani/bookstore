@@ -6,31 +6,44 @@ import { BookTypes } from "@/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Link from "next/link";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 export default function BookDetail({ book }: { book: BookTypes }) {
+  const router = useRouter();
   const shadow = "shadow-[-5px_0px_15px_8px_rgba(0,0,0,0.25)]";
   const btnstyle =
     "flex px-[10px] py-[0px] bg-white items-center justify-center w-[35px] h-[30px]";
-
-  const maxQty = book.qty;
-
   const [qtyValue, setQtyValue] = useState(1);
-  const handleMinus = () => {
-    if (qtyValue > 1) {
-      setQtyValue(qtyValue - 1);
-    }
-  };
+  const maxQty = book.qty;
+  const totalPrice = qtyValue * book.price;
 
   const handlePlus = () => {
-    if (qtyValue < maxQty) {
-      setQtyValue(qtyValue + 1);
+    if (qtyValue === maxQty) {
+      toast("Sorry, we only have " + qtyValue + " books left", {
+        type: "error",
+      });
+      return;
     }
+    setQtyValue(qtyValue + 1);
   };
 
-  console.log(book.qty);
+  const handleMinus = () => {
+    if (qtyValue == 1) {
+      toast("Sorry, you can't order less than 1 book", {
+        type: "error",
+      });
+      return;
+    }
+    setQtyValue(qtyValue - 1);
+  };
 
-  const totalPrice = qtyValue * book.price;
+  const handleSubmit = () => {
+    Cookies.set("book", JSON.stringify(book));
+    Cookies.set("requestedQty", JSON.stringify(qtyValue));
+    toast("Great, you can complete your payment!", { type: "success" });
+    router.push("/checkout");
+  };
 
   return (
     <>
@@ -109,7 +122,10 @@ export default function BookDetail({ book }: { book: BookTypes }) {
               <h1 className="bg-white text-[22px]">Quantity</h1>
               <div className="flex items-center  ">
                 <section className="flex rounded-md border-[1px] border-black overflow-hidden ">
-                  <button onClick={handleMinus} className={`${btnstyle}  hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)]`}>
+                  <button
+                    onClick={handleMinus}
+                    className={`${btnstyle}  hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)]`}
+                  >
                     -
                   </button>
                   <input
@@ -118,7 +134,10 @@ export default function BookDetail({ book }: { book: BookTypes }) {
                     max={book.qty}
                     disabled
                   ></input>
-                  <button onClick={handlePlus} className={`${btnstyle}  hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)] `}>
+                  <button
+                    onClick={handlePlus}
+                    className={`${btnstyle}  hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)] `}
+                  >
                     +
                   </button>
                 </section>
@@ -134,9 +153,12 @@ export default function BookDetail({ book }: { book: BookTypes }) {
             </section>
 
             <div className="flex justify-end">
-              <Link href={'/checkout'} className="px-[15px] py-[10px] bg-white border-black border-[1px] hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)]">
+              <button
+                onClick={handleSubmit}
+                className="px-[15px] py-[10px] bg-white border-black border-[1px] hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)]"
+              >
                 Buy Now
-              </Link>
+              </button>
             </div>
           </div>
         </section>

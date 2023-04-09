@@ -19,7 +19,7 @@ export default function Card(props: InputProps) {
       <div className="px-[35px] py-[20px]">
         <Image
           className="rounded-lg duration-[300ms] shadow-[-6px_5px_5px_2px_rgba(0,0,0,0.3)]"
-          src={`/assets/images/${source}`}
+          src={`/assets/BookCover/${source}.png`}
           alt="images"
           width={160}
           height={160}

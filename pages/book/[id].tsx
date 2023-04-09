@@ -134,7 +134,7 @@ export default function BookDetail({ book }: { book: BookTypes }) {
             </section>
 
             <div className="flex justify-end">
-              <Link href={'profile'} className="px-[15px] py-[10px] bg-white border-black border-[1px] hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)]">
+              <Link href={'/checkout'} className="px-[15px] py-[10px] bg-white border-black border-[1px] hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)]">
                 Buy Now
               </Link>
             </div>

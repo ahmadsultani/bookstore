@@ -76,7 +76,7 @@ export default function Checkout(props: CheckoutTypes) {
             {/*images */}
             <div>
               <Image
-                src={"/assets/images/TestPic.jpg"}
+                src={`/assets/BookCover/${book.title}.png`}
                 alt={""}
                 width={400}
                 height={400}

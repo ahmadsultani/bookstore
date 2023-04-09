@@ -33,12 +33,14 @@ export default function Checkout(props: CheckoutTypes) {
     console.log(res);
     if (res.error) {
       toast(res.message, { type: "error" });
-      if (res.message.includes("Balance is not enough")) {
-        const goTopup = confirm("Do you want to topup?");
-        if (goTopup) {
-          router.push("/profile");
+      setTimeout(() => {
+        if (res.message.includes("Balance is not enough")) {
+          const goTopup = confirm("Do you want to topup?");
+          if (goTopup) {
+            router.push("/profile");
+          }
         }
-      }
+      }, 3000);
       return;
     }
     toast("Thanks for buying :)", { type: "success" });

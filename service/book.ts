@@ -16,8 +16,20 @@ export async function getAllBooks() {
   return res;
 }
 
-export async function getBookById(id: string) {
+export async function getBookById(id: string, serverToken? : string) {
   const url = `${ROOT_URL}/${API_VERSION}/book/${id}`;
+
+  if (serverToken) {
+    const res = await callAPI({
+      url,
+      method: "GET",
+      serverToken,
+    });
+
+    console.log("res", res);
+
+    return res;
+  }
 
   const res = await callAPI({
     url,

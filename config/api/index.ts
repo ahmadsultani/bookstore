@@ -3,15 +3,18 @@ import Cookies from "js-cookie";
 
 interface ICallAPI extends AxiosRequestConfig {
   token?: boolean;
+  serverToken?: string;
 }
 
 export default async function callAPI(config: ICallAPI) {
-  const { url, method, data, token } = config;
+  const { url, method, data, token, serverToken } = config;
   let headers = {} as AxiosHeaders;
 
   headers["Content-Type"] = "application/json";
 
-  if (token) {
+  if (serverToken) {
+    headers.Authorization =`Bearer ${serverToken}`
+  } else if (token) {
     const jwt = Cookies.get("token");
     if (jwt) {
       headers.Authorization =`Bearer ${jwt}`

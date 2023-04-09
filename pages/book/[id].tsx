@@ -74,7 +74,7 @@ export default function BookDetail() {
 					{/*Left */}
 					<div className={` bg-[#d9d9d965] px-[40px] py-[20px] rounded-md `}>
 						<Image
-							src={"/assets/images/Book.png"}
+							src={`/assets/images/Book.png`}
 							alt={""}
 							height={300}
 							width={300}
@@ -99,7 +99,8 @@ export default function BookDetail() {
 						<p className="font-semibold">{book?.price.toLocaleString()}</p>
 					</div>
           </section>
-
+          <div className="flex flex-col">
+          <h1 className="font-bold">Description</h1>
 					<p className="text-justify">
 						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
 						corporis nobis ipsum itaque voluptatem molestiae quae sapiente
@@ -114,6 +115,17 @@ export default function BookDetail() {
 						soluta recusandae! Voluptatum iure temporibus quidem nulla
 						reprehenderit soluta reiciendis recusandae libero sequi!
 					</p>
+          </div>
+          
+          <div>
+            <h1 className="font-bold">Detail</h1>
+            <section className="flex flex-col">
+              <div className="flex flex-col">
+                <h1 className="font-semibold">Jumlah Stok:</h1>
+                <h2>{book?.qty}</h2>
+              </div>
+            </section>
+          </div>
 				</section>
 				<section>
 					{/*Right */}

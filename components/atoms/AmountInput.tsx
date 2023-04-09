@@ -41,7 +41,7 @@ export default function AmountInput(props: AmountInputProps) {
 			onChange={handleChange}
 			value={amount == 0 || activeIndex !== -1 ? "" : formatted}
 			onFocus={handleFocus}
-			className="bg-white rounded-md py-[5px] pl-[15px] focus:outline-none "
+			className="bg-white rounded-md py-2 pl-[15px] focus:outline-none "
 		/>
 	);
 }

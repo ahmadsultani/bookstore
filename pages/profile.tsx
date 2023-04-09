@@ -71,7 +71,7 @@ export default function Profile() {
                     height={100}
                   />
                   <div className="flex flex-col ">
-                    <h1 className="grow mt-[-2	px] font-semibold text-[15px]">
+                    <h1 className="grow mt-[4px] font-semibold text-[15px]">
                       Hi! {user?.name.split(" ")[0]}
                     </h1>
                     <h1 className="mb-[5px] font-bold text-[rgba(0,0,0,0.5)] text-[10px]">

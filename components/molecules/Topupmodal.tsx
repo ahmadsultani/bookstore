@@ -30,9 +30,9 @@ export default function Topupmodal(props: TopupModalProps) {
       return;
     }
     setIsCompletedTopup(true);
-		alert("Topup Success");
+    alert("Topup Success");
     handleOpenModal();
-		setActiveIndex(-1);
+    setActiveIndex(-1);
   };
 
   const able =
@@ -46,13 +46,18 @@ export default function Topupmodal(props: TopupModalProps) {
     <main
       className={`fixed ${show} top-0 z-50 w-screen bg-black bg-opacity-70 h-screen items-center justify-center`}
     >
-      <div className="bg-primary p-[30px] flex gap-[30px] flex-col h-[540px] rounded-lg overflow-hidden ">
+      <div className="bg-primary p-[30px] flex gap-[30px] flex-col rounded-lg overflow-hidden ">
         <section className=" justify-end flex">
-          <button onClick={handleOpenModal} className="bg-green">
-            Exit
+          <button onClick={handleOpenModal}>
+            <Image
+              src={"/assets/icons/close.png"}
+              width={20}
+              height={20}
+              alt="close"
+            />
           </button>
         </section>
-        <section className="flex gap-[10px] justify-center">
+        <section className="flex gap-[10px] justify-center -mt-4">
           <Image
             src={"/assets/logos/Bookstore.svg"}
             alt="images"
@@ -62,8 +67,8 @@ export default function Topupmodal(props: TopupModalProps) {
           />
           <h1 className="text-[30px]  text-green">Bookstore</h1>
         </section>
-        <section className="gap-[30px] flex flex-col  rounded-lg">
-          <div className="grid grid-cols-3 gap-[30px]">
+        <section className="gap-[30px] flex flex-col rounded-lg w-fit h-fit">
+          <div className="grid grid-cols-3 gap-[30px] shrink-0">
             {amounts.map((item, index) => (
               <Amountbtn
                 amount={item}

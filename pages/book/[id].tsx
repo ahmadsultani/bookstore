@@ -6,6 +6,7 @@ import { BookTypes } from "@/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function BookDetail({ book }: { book: BookTypes }) {
   const shadow = "shadow-[-5px_0px_15px_8px_rgba(0,0,0,0.25)]";
@@ -107,8 +108,8 @@ export default function BookDetail({ book }: { book: BookTypes }) {
             <section className="flex flex-col gap-[15px] ">
               <h1 className="bg-white text-[22px]">Quantity</h1>
               <div className="flex items-center  ">
-                <section className="flex rounded-md border-[1px] bg-primary border-black overflow-hidden ">
-                  <button onClick={handleMinus} className={`${btnstyle}`}>
+                <section className="flex rounded-md border-[1px] border-black overflow-hidden ">
+                  <button onClick={handleMinus} className={`${btnstyle}  hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)]`}>
                     -
                   </button>
                   <input
@@ -117,7 +118,7 @@ export default function BookDetail({ book }: { book: BookTypes }) {
                     max={book.qty}
                     disabled
                   ></input>
-                  <button onClick={handlePlus} className={`${btnstyle}`}>
+                  <button onClick={handlePlus} className={`${btnstyle}  hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)] `}>
                     +
                   </button>
                 </section>
@@ -133,9 +134,9 @@ export default function BookDetail({ book }: { book: BookTypes }) {
             </section>
 
             <div className="flex justify-end">
-              <button className="px-[15px] py-[10px] bg-white border-black border-[1px]">
+              <Link href={'profile'} className="px-[15px] py-[10px] bg-white border-black border-[1px] hover:bg-[rgba(0,0,0,0.16)] duration-[200ms] active:bg-[rgba(0,0,0,0.51)]">
                 Buy Now
-              </button>
+              </Link>
             </div>
           </div>
         </section>
